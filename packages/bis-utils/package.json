@@ -23,7 +23,7 @@
 	"gitHead": "3a1fcf2628cec772904674ccba29d94277ec0560",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/bisenterprises/bisenterprises-bis-utils",
+		"url": "https://github.com/bisenterprises/kyber-utils",
 		"directory": "packages/bis-utils"
 	},
 	"license": "MIT"

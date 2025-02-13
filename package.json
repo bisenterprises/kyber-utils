@@ -2,11 +2,9 @@
   "name": "kyber-utils-monorepo",
   "version": "1.0.0",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "lerna run build --stream",
     "test": "lerna run test --stream",
