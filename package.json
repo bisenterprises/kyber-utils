@@ -1,0 +1,32 @@
+{
+  "name": "kyber-utils-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "build": "lerna run build --stream",
+    "test": "lerna run test --stream",
+    "lint": "lerna run lint --stream",
+    "publish:workspaces": "yarn workspaces foreach --verbose npm publish --access public"
+  },
+  "devDependencies": {
+    "lerna": "^7.0.0",
+    "yarn": "^1.22.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bisenterprises/kyber-utils"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.26.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  }
+}

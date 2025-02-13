@@ -1,0 +1,39 @@
+name: Release Package
+
+on:
+  push:
+    branches:
+      - main  # Runs when pushing to main
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@bisenterprises"
+
+      - name: Authenticate with GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+
+      - name: Install Dependencies
+        run: yarn install --immutable
+
+      - name: Build packages
+        run: yarn workspaces foreach run build
+
+      - name: Publish all workspaces
+        run: yarn workspaces foreach --verbose npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
